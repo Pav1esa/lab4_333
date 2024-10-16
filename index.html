@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Операції з масивами</title>
+	</head>
+	<body>
+		<script>
+			"use strict";
+
+			let arr = [];
+			for (let i = 0; i < 15; i++) {
+				arr.push(Math.floor(Math.random() * 41) - 20);
+			}
+
+			document.write("Масив: " + arr.join(", ") + "<br>");
+			let C = parseInt(prompt("Введіть число C"));
+			let filteredArr = arr.filter(num => num !== C);
+			let sum = filteredArr.reduce((acc, num) => acc + num, 0);
+			let average = sum / filteredArr.length;
+
+			document.write("Середнє арифметичне чисел, нерівних " + C + ": " + average.toFixed(2) + "<br>");
+			let product = arr.reduce((acc, num, index) => {
+				return (index % 2 === 0 && num <= 0) ? acc * num : acc;
+			}, 1);
+
+			if (product === 1) {
+				document.write("В масиві немає від'ємних чисел на парних місцях.");
+			} else {
+				document.write("Добуток від'ємних чисел на парних місцях: " + product);
+			}
+		</script>
+	</body>
+</html>
